@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 
-const navLinks = ["Home", "About", "Projects", "Contact"];
+const navLinks = [
+  { name: "Home", href: "#" },
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +27,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="transition-colors duration-300 hover:text-indigo-400 cursor-pointer"
             >
-              {link}
+              <a href={link.href}>{link.name}</a>
             </motion.li>
           ))}
         </ul>
@@ -46,7 +51,7 @@ const Navbar = () => {
               className="py-2 border-b border-gray-700 text-lg hover:text-indigo-400 transition-colors duration-300 cursor-pointer"
               onClick={() => setMenuOpen(false)}
             >
-              {link}
+              <a href={link.href}>{link.name}</a>
             </li>
           ))}
         </motion.ul>

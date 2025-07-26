@@ -7,6 +7,8 @@ import Qualifications from "./components/Qualifications";
 import Navbar from "./components/Navbar";
 import ThreeBG from "./components/ThreeBG";
 import "./index.css";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -18,6 +20,9 @@ export default function App() {
         <About />
         <Qualifications />
         <Projects />
+        <Contact />
+        <br></br>
+        <Footer/>
       </main>
     </div>
   );
