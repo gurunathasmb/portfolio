@@ -25,16 +25,16 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/gurunathasmb" target="_blank" rel="noopener noreferrer">
             <FaGithub className="hover:scale-110 transition" style={{ color: "#3AFF00" }} />
           </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://linkedin.com/in/gurunathasmb" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="hover:scale-110 transition" style={{ color: "#3AFF00" }} />
           </a>
-          <a href="tel:+919999999999">
+          <a href="tel:+918197736731">
             <FaPhoneAlt className="hover:scale-110 transition" style={{ color: "#3AFF00" }} />
           </a>
-          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+          <a href="https://instagram.com/gurunathasmb" target="_blank" rel="noopener noreferrer">
             <FaInstagram className="hover:scale-110 transition" style={{ color: "#3AFF00" }} />
           </a>
         </motion.div>
