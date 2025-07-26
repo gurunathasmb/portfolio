@@ -43,7 +43,7 @@ const projects = [
     description: 'A centralized web application for managing student-teacher projects, including documentation upload, team coordination, fund requests, and project tracking. Built with MERN stack and role-based access control.',
   },
   {
-    title: 'Lip Sync AI Avatar',
+    title: 'AI Avatar',
     img: 'lip.png',
     code: 'https://github.com/gurunathasmb/lipscyn',
     lock: true,
