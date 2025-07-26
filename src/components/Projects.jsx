@@ -4,33 +4,46 @@ import React from 'react';
 const projects = [
   {
     title: 'Speech-to-Text Conversion System',
-    img: '../assests/gg.jpg',
+    img: 'speech1.png',
     code: '#',
     lock: false,
   },
   {
     title: 'AI Fashion Style',
-    img: '/images/agro.png',
+    img: 'ai-fashion.png',
     code: '#',
     lock: false,
   },
   {
     title: 'GUDBLOOD',
-    img: '/images/netflix.png',
+    img: 'gud.png',
     code: '#',
     lock: false,
   },
   {
     title: 'Cow Breed Backend',
-    img: '/images/liver.png',
+    img: 'cow.png',
     code: '#',
     lock: false,
   },
   {
-    title: 'Lip Sync AI Avatar',
-    img: '/images/liver.png',
+    title: 'Binary Sentiment Analysis',
+    img: 'binary.png',
     code: '#',
     lock: false,
+  },
+  {
+    title: 'Project Management System',
+    img: 'cow.png',
+    code: '#',
+    lock: true,
+  },
+
+  {
+    title: 'Lip Sync AI Avatar',
+    img: 'lip.png',
+    code: '#',
+    lock: true,
   },
 ];
 
