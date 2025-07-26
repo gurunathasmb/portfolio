@@ -5,44 +5,44 @@ const projects = [
   {
     title: 'Speech-to-Text Conversion System',
     img: 'speech1.png',
-    code: '#',
+    code: 'https://github.com/gurunathasmb/NLPhackthon',
     lock: false,
   },
   {
     title: 'AI Fashion Style',
     img: 'ai-fashion.png',
-    code: '#',
+    code: 'https://github.com/gurunathasmb/CNN-Model-',
     lock: false,
   },
   {
     title: 'GUDBLOOD',
     img: 'gud.png',
-    code: '#',
+    code: 'https://github.com/gurunathasmb/GUDBLOOD',
     lock: false,
   },
   {
     title: 'Cow Breed Backend',
     img: 'cow.png',
-    code: '#',
+    code: 'https://github.com/gurunathasmb/cow-breed-backend',
     lock: false,
   },
   {
     title: 'Binary Sentiment Analysis',
     img: 'binary.png',
-    code: '#',
+    code: 'https://github.com/gurunathasmb/electronix_ai',
     lock: false,
   },
   {
     title: 'Project Management System',
-    img: 'cow.png',
-    code: '#',
+    img: 'project.png',
+    code: 'https://github.com/gurunathasmb/project_managment',
     lock: true,
   },
 
   {
     title: 'Lip Sync AI Avatar',
     img: 'lip.png',
-    code: '#',
+    code: 'https://github.com/gurunathasmb/lipscyn',
     lock: true,
   },
 ];
