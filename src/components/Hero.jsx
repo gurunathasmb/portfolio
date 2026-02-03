@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import profile from '../assests/g.jpg'; // Replace with your actual image path
-
+import logo from '../assests/gmb.png';
 const textVariant = {
   hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
@@ -53,26 +53,35 @@ const Hero = () => {
           Passionate and driven ML and Frontend Developer with a strong foundation in creating intelligent, user-friendly apps. Skilled in React, Python, SQL, and deploying real-world ML models.
         </motion.p>
 
-        {/* Buttons */}
         <motion.div
-          className="flex justify-center md:justify-start gap-4"
-          variants={textVariant}
-          custom={4}
-        >
-          <a
-            href="mailto:gurunathagoudambiradar@gmail.com"
-            className="bg-[#3AFF00]/80 text-black font-semibold px-4 py-2 rounded-xl transition duration-300 hover:bg-gradient-to-r hover:from-green-400 hover:via-yellow-400 hover:to-red-400"
-          >
-            Hire Me
-          </a>
-          <a
-            href="/Guru_1DS22AI016.pdf"
-            download
-            className="bg-[#3AFF00]/80 text-black font-semibold px-4 py-2 rounded-xl transition duration-300 hover:bg-gradient-to-r hover:from-green-400 hover:via-yellow-400 hover:to-red-400"
-          >
-            Download CV
-          </a>
-        </motion.div>
+  className="flex justify-center md:justify-start items-center gap-4"
+  variants={textVariant}
+  custom={4}
+>
+  <a
+    href="mailto:gurunathagoudambiradar@gmail.com"
+    className="bg-[#3AFF00]/80 text-black font-semibold px-4 py-2 rounded-xl transition duration-300 hover:bg-gradient-to-r hover:from-green-400 hover:via-yellow-400 hover:to-red-400"
+  >
+    Hire Me
+  </a>
+
+  <a
+    href="/Guru_1DS22AI016.pdf"
+    download
+    className="bg-[#3AFF00]/80 text-black font-semibold px-4 py-2 rounded-xl transition duration-300 hover:bg-gradient-to-r hover:from-green-400 hover:via-yellow-400 hover:to-red-400"
+  >
+    Download CV
+  </a>
+
+  {/* ===== YOUR LOGO AFTER DOWNLOAD CV ===== */}
+  <motion.img
+    src={logo}
+    alt="GMB Logo"
+    className="w-12 h-12 rounded-full"
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+  />
+</motion.div>
 
         {/* Social Links */}
         <motion.div
@@ -90,23 +99,40 @@ const Hero = () => {
       </motion.div>
 
       {/* Image with Glowing Animation */}
-      <motion.div
-        className="relative mt-10 md:mt-0 flex justify-center items-center w-72 h-72"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.8, ease: 'easeOut' }}
-      >
-        <div className="relative">
-          <div className="w-64 h-64 rounded-full overflow-hidden relative border-4 border-[#3AFF00] shadow-[0_0_25px_#3AFF00] animate-pulse">
-            <img
-              src={profile}
-              alt="Profile"
-              className="w-full h-full object-cover rounded-full"
-            />
-          </div>
-          <div className="absolute top-0 left-0 w-full h-full rounded-full animate-spin-slow border-4 border-dashed border-[#3AFF00]/30" />
-        </div>
-      </motion.div>
+     {/* Image with Glowing Animation + Rotating LOGO (No Corners) */}
+<motion.div
+  className="relative mt-10 md:mt-0 flex justify-center items-center"
+  initial={{ opacity: 0, scale: 0.5 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ delay: 1, duration: 0.8, ease: 'easeOut' }}
+>
+  {/* Rotating logo inside a CIRCLE (no corners) */}
+  <motion.div
+    className="absolute w-80 h-80 rounded-full overflow-hidden"
+    animate={{ rotate: 360 }}
+    transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
+  >
+    <img
+      src={logo}
+      alt="GMB Logo"
+      className="w-full h-full object-cover"
+    />
+  </motion.div>
+
+  {/* Your profile image stays SAME */}
+  <div className="relative">
+    <div className="w-64 h-64 rounded-full overflow-hidden relative border-4 border-[#3AFF00] shadow-[0_0_25px_#3AFF00] animate-pulse">
+      <img
+        src={profile}
+        alt="Profile"
+        className="w-full h-full object-cover rounded-full"
+      />
+    </div>
+
+    <div className="absolute top-0 left-0 w-full h-full rounded-full animate-spin-slow border-4 border-dashed border-[#3AFF00]/30" />
+  </div>
+</motion.div>
+
     </section>
   );
 };
