@@ -3,6 +3,37 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Qualifications() {
+
+  const experience = [
+    {
+      role: "Machine Learning Intern",
+      company: "Nokia",
+      details: [
+        "Developed ML-based radio propagation loss models using RF theory + regression.",
+        "Improved 4G/5G signal prediction accuracy using FSPL, Hata, COST-231 models.",
+        "Built automated evaluation pipeline for network performance monitoring."
+      ]
+    },
+    {
+      role: "Intern",
+      company: "Techmiya Solutions",
+      details: [
+        "Developed full-stack modules with machine-learning-enabled features.",
+        "Built API-driven automation components for intelligent workflows.",
+        "Enhanced UI responsiveness and backend performance."
+      ]
+    },
+    {
+      role: "Intern",
+      company: "Nuverea Infotech",
+      details: [
+        "Built MERN-based admin dashboard for real-time analytics.",
+        "Developed dynamic UI components improving usability.",
+        "Optimized MongoDB queries for faster performance."
+      ]
+    }
+  ];
+
   const timeline = [
     {
       title: "Artificial Intelligence & Machine Learning Engineering",
@@ -12,7 +43,7 @@ export default function Qualifications() {
     },
     {
       title: "Pre-University Education",
-      institution: "patil's Oxford PU Science college",
+      institution: "Patil's Oxford PU Science College",
       date: "Completed April 2022",
       gpa: "Percentage: 89.85%",
     },
@@ -27,8 +58,41 @@ export default function Qualifications() {
   return (
     <section
       id="qualifications"
-      className="min-h-screen py-20 bg-gradient-to-br from- to- px-4"
+       className="min-h-screen py-20 bg-gradient-to-br from- to- px-4"
     >
+
+      {/* ================= EXPERIENCE SECTION ================= */}
+      <h2 className="text-4xl font-bold mb-10 text-center text-[#3AFF00]">
+        Experience
+      </h2>
+
+      <div className="relative max-w-3xl mx-auto pl-6 border-l-4 border-[#3AFF00] mb-16">
+        {experience.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            viewport={{ once: true }}
+            className="mb-10 ml-6 relative"
+          >
+            <div className="absolute w-4 h-4 bg-[#3AFF00] rounded-full -left-[22px] top-1.5 border-2 border-white"></div>
+
+            <div className="bg-[#B2FFB2]/10 border border-[#3AFF00] p-5 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold text-[#3AFF00]">
+                {item.role} — {item.company}
+              </h3>
+              <ul className="text-green-200 mt-2 list-disc pl-5">
+                {item.details.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* ================= QUALIFICATIONS SECTION ================= */}
       <h2 className="text-4xl font-bold mb-12 text-center text-[#3AFF00]">
         Qualifications
       </h2>
@@ -43,7 +107,6 @@ export default function Qualifications() {
             viewport={{ once: true }}
             className="mb-10 ml-6 relative"
           >
-            {/* Timeline Dot */}
             <div className="absolute w-4 h-4 bg-[#3AFF00] rounded-full -left-[22px] top-1.5 border-2 border-white"></div>
 
             <div className="bg-[#B2FFB2]/10 border border-[#3AFF00] p-5 rounded-lg shadow-lg">
@@ -58,6 +121,7 @@ export default function Qualifications() {
           </motion.div>
         ))}
       </div>
+
     </section>
   );
 }
