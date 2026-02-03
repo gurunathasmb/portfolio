@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-gradient-to-br ">
+    <section id="about" className="py-16 bg-gradient-to-br">
       <motion.h2
         className="text-3xl font-bold mb-6 text-[#3AFF00] text-center"
         initial={{ opacity: 0, y: -50 }}
@@ -16,6 +16,7 @@ export default function About() {
       </motion.h2>
 
       <div className="md:flex justify-between items-start gap-10">
+        {/* LEFT CARD */}
         <motion.div
           className="md:w-1/2 bg-[#B2FFB2]/10 p-6 rounded-xl shadow-lg border border-[#3AFF00]"
           initial={{ opacity: 0, x: -80 }}
@@ -24,19 +25,33 @@ export default function About() {
           viewport={{ once: true }}
         >
           <p className="text-green-200 mb-4">
-            I'm an Artificial Intelligence and Machine Learning student & developer. 
-            I'm a final-year Computer Science student at Dayananda Sagar College of Engineering. I specialize in:
+            I’m an Artificial Intelligence & Machine Learning engineer who enjoys
+            building intelligent systems end-to-end — from data pipelines to
+            deployable AI products.
           </p>
-          <ul className="list-disc list-inside text-green-100 mb-4">
-            <li>Full Stack Development (MERN)</li>
-            <li>Machine Learning Developer</li>
-            <li>Deep Learning</li>
+
+          <p className="text-green-200 mb-4">
+            I’m currently a final-year Computer Science (AI & ML) student at
+            Dayananda Sagar College of Engineering, with hands-on experience in
+            designing, experimenting, and shipping AI systems.
+          </p>
+
+          <ul className="list-disc list-inside text-green-100 mb-4 space-y-1">
+            <li>Retrieval-Augmented Generation (RAG) systems</li>
+            <li>Single-agent & multi-agent workflows</li>
+            <li>LangChain & LangGraph based pipelines</li>
+            <li>Custom agent frameworks & MCP experiments</li>
+            <li>Full-stack AI applications (MERN + Python)</li>
           </ul>
+
           <p className="text-green-200">
-            Passionate about designing digital experiences and uncovering insights from data.
+            I actively think about system trade-offs — cost, latency, accuracy,
+            and scalability — and enjoy experimenting with creative or
+            unconventional AI ideas before moving them to production.
           </p>
         </motion.div>
 
+        {/* RIGHT CARD */}
         <motion.div
           className="md:w-1/2 mt-10 md:mt-0"
           initial={{ opacity: 0, x: 80 }}
@@ -45,13 +60,34 @@ export default function About() {
           viewport={{ once: true }}
         >
           <h3 className="text-xl font-semibold text-[#3AFF00] mb-2">
-            Skills
+            Skills & Tools
           </h3>
+
           <div className="flex flex-wrap gap-2 mt-2">
             {[
-              "HTML", "CSS", "JavaScript", "MERN", "CNN", "LSTM", "GRU", "MLOPS", "Docker",
-              "Google Cloud", "Streamlit", "Flask", "FastAPI", "Python", "ML", "Google Colab",
-              "GIT", "Github", "Vercel", "Netlify"
+              "Python",
+              "JavaScript",
+              "RAG Systems",
+              "LLM Agents",
+              "LangChain",
+              "LangGraph",
+              "Multi-Agent Systems",
+              "Prompt Engineering",
+              "CNN",
+              "LSTM",
+              "GRU",
+              "Deep Learning",
+              "MLOps",
+              "Docker",
+              "FastAPI",
+              "Flask",
+              "Streamlit",
+              "MERN Stack",
+              "Google Cloud",
+              "Git",
+              "GitHub",
+              "Vercel",
+              "Netlify"
             ].map((skill) => (
               <motion.span
                 key={skill}

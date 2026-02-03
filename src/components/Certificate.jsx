@@ -9,8 +9,8 @@ const certificates = [
   },
   {
     id: 2,
-    title: 'Nueva Internship Certificate',
-    image: '/certificates/fullstack.png',
+    title: 'Nokia Machine Learning Internship',
+    image: '/certificates/Nokia.jpg',
   },
   {
     id: 3,
@@ -32,6 +32,16 @@ const certificates = [
     title: 'NPTEL Accounting Course',
     image: '/certificates/RL.jpg',
   },
+  {
+    id: 7,
+    title: 'Nueva Internship Certificate',
+    image: '/certificates/fullstack.png',
+  },
+  {
+    id: 8,
+    title: 'Nvidia',
+    image: '/certificates/nvidia.png',
+  }
 ];
 
 const Certificate = () => {
