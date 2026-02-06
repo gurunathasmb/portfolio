@@ -9,39 +9,40 @@ const certificates = [
   },
   {
     id: 2,
+    title: 'Nvidia',
+    image: '/certificates/nvidia.png',
+  },
+  {
+    id: 3,
     title: 'Nokia Machine Learning Internship',
     image: '/certificates/Nokia.jpg',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Generative AI by Microsoft',
     image: '/certificates/GenAI.jpg',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Infosys AI Certification',
     image: '/certificates/AI.jpg',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Explore ML using Python',
     image: '/certificates/ML.jpg',
   },
   {
-    id: 6,
+    id: 7,
     title: 'NPTEL Accounting Course',
     image: '/certificates/RL.jpg',
   },
   {
-    id: 7,
+    id: 8,
     title: 'Nueva Internship Certificate',
     image: '/certificates/fullstack.png',
   },
-  {
-    id: 8,
-    title: 'Nvidia',
-    image: '/certificates/nvidia.png',
-  }
+ 
 ];
 
 const Certificate = () => {
