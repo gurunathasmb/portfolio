@@ -1,106 +1,92 @@
-// File: src/components/About.jsx
-import React from "react";
-import { motion } from "framer-motion";
+// src/components/About.jsx
+import React from 'react';
+import { MapPin, Briefcase, GraduationCap, Sparkles } from 'lucide-react';
+import { Section, SectionHeader, FadeIn } from './ui/Section';
+import TiltCard from './ui/TiltCard';
+
+const facts = [
+  { icon: Briefcase, label: 'Role', value: 'MLOps Engineer · Nivaris Healthcare' },
+  { icon: GraduationCap, label: 'Degree', value: 'B.E. AI & ML · DSCE · 8.67' },
+  { icon: MapPin, label: 'Based in', value: 'Bengaluru, India' },
+];
+
+const pillars = [
+  { title: 'Production MLOps', desc: 'Pipelines, serving, CI/CD and monitoring.' },
+  { title: 'Computer Vision', desc: 'Inspection, segmentation, classification.' },
+  { title: 'LLM Agents & RAG', desc: 'Multi-agent orchestration with tools & memory.' },
+  { title: 'Full-Stack ML', desc: 'APIs and interfaces that put models in hands.' },
+];
 
 export default function About() {
   return (
-    <section id="about" className="py-16 bg-gradient-to-br">
-      <motion.h2
-        className="text-3xl font-bold mb-6 text-[#3AFF00] text-center"
-        initial={{ opacity: 0, y: -50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        About Me
-      </motion.h2>
+    <Section id="about">
+      <div className="grid items-center gap-16 lg:grid-cols-12">
+        {/* Collector ID card */}
+        <div className="lg:col-span-5">
+          <FadeIn>
+            <TiltCard max={6} glare={false} className="group mx-auto max-w-md">
+              <div className="gradient-border rounded-[28px] p-px">
+                <div className="relative overflow-hidden rounded-[27px] bg-black">
+                  <div className="relative aspect-square overflow-hidden">
+                    <img
+                      src="/guru-hd.jpg"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = '/guru.jpg';
+                      }}
+                      alt="Gurunathagouda M Biradar"
+                      className="h-full w-full object-cover object-top"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(94,234,212,0.12),transparent_60%)]" />
+                  </div>
+                  <div className="relative space-y-3 border-t border-white/10 bg-[#0b0e14] p-6">
+                    <div className="film-title text-2xl text-white">Gurunathagouda M Biradar</div>
+                    {facts.map(({ icon: Icon, label, value }) => (
+                      <div key={label} className="flex items-start gap-3 text-sm">
+                        <Icon size={15} className="mt-0.5 shrink-0 text-teal-300" />
+                        <span className="w-16 shrink-0 pt-0.5 text-[10px] uppercase tracking-widest text-slate-500">{label}</span>
+                        <span className="text-slate-200">{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </TiltCard>
+          </FadeIn>
+        </div>
 
-      <div className="md:flex justify-between items-start gap-10">
-        {/* LEFT CARD */}
-        <motion.div
-          className="md:w-1/2 bg-[#B2FFB2]/10 p-6 rounded-xl shadow-lg border border-[#3AFF00]"
-          initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-green-200 mb-4">
-            I’m an Artificial Intelligence & Machine Learning engineer who enjoys
-            building intelligent systems end-to-end — from data pipelines to
-            deployable AI products.
-          </p>
+        <div className="lg:col-span-7">
+          <SectionHeader index="01" eyebrow="About" title="I turn models into" accent="dependable products." />
+          <FadeIn delay={0.1}>
+            <div className="space-y-5 text-base sm:text-lg font-light leading-relaxed text-slate-300 -mt-6">
+              <p>
+                I'm an MLOps and machine learning engineer who cares about the unglamorous half of AI — the
+                pipelines, deployments and monitoring that let a model keep working long after the demo.
+              </p>
+              <p className="text-slate-400">
+                Today I do that at <span className="text-white">Nivaris Healthcare</span>. Before that I built
+                surface-defect vision systems at <span className="text-white">National Aerospace Laboratories</span>{' '}
+                and RF propagation models at <span className="text-white">Nokia</span>.
+              </p>
+            </div>
+          </FadeIn>
 
-          <p className="text-green-200 mb-4">
-            I’m currently a final-year Computer Science (AI & ML) student at
-            Dayananda Sagar College of Engineering, with hands-on experience in
-            designing, experimenting, and shipping AI systems.
-          </p>
-
-          <ul className="list-disc list-inside text-green-100 mb-4 space-y-1">
-            <li>Retrieval-Augmented Generation (RAG) systems</li>
-            <li>Single-agent & multi-agent workflows</li>
-            <li>LangChain & LangGraph based pipelines</li>
-            <li>Custom agent frameworks & MCP experiments</li>
-            <li>Full-stack AI applications (MERN + Python)</li>
-          </ul>
-
-          <p className="text-green-200">
-            I actively think about system trade-offs — cost, latency, accuracy,
-            and scalability — and enjoy experimenting with creative or
-            unconventional AI ideas before moving them to production.
-          </p>
-        </motion.div>
-
-        {/* RIGHT CARD */}
-        <motion.div
-          className="md:w-1/2 mt-10 md:mt-0"
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-xl font-semibold text-[#3AFF00] mb-2">
-            Skills & Tools
-          </h3>
-
-          <div className="flex flex-wrap gap-2 mt-2">
-            {[
-              "Python",
-              "JavaScript",
-              "RAG Systems",
-              "LLM Agents",
-              "LangChain",
-              "LangGraph",
-              "Multi-Agent Systems",
-              "Prompt Engineering",
-              "CNN",
-              "LSTM",
-              "GRU",
-              "Deep Learning",
-              "MLOps",
-              "Docker",
-              "FastAPI",
-              "Flask",
-              "Streamlit",
-              "MERN Stack",
-              "Google Cloud",
-              "Git",
-              "GitHub",
-              "Vercel",
-              "Netlify"
-            ].map((skill) => (
-              <motion.span
-                key={skill}
-                className="bg-gradient-to-br from-green-500 to-green-300 text-black px-3 py-1 rounded shadow"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {skill}
-              </motion.span>
+          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+            {pillars.map((p, i) => (
+              <FadeIn key={p.title} delay={0.15 + i * 0.05}>
+                <div className="glass-card group flex items-start gap-3 rounded-2xl p-5">
+                  <Sparkles size={16} className="mt-1 shrink-0 text-violet-300 transition-transform group-hover:rotate-12" />
+                  <div>
+                    <div className="film-title text-lg text-white">{p.title}</div>
+                    <div className="text-sm font-light text-slate-400">{p.desc}</div>
+                  </div>
+                </div>
+              </FadeIn>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }

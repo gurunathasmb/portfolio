@@ -1,128 +1,74 @@
 // src/components/LoadingScreen.jsx
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { shaderMaterial } from "@react-three/drei";
-import * as THREE from "three";
-import { extend } from "@react-three/fiber";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
-// --- GLSL Shader: Green Energy Waves ---
-const WaveShaderMaterial = shaderMaterial(
-  { uTime: 0, uColor: new THREE.Color("#3AFF00") },
-  // Vertex Shader
-  `
-    uniform float uTime;
-    varying vec2 vUv;
-    varying float vWave;
+export default function LoadingScreen({ onComplete }) {
+  const [stage, setStage] = useState(0);
 
-    void main() {
-      vUv = uv;
-      vec3 pos = position;
-      float waveX = sin(pos.x * 4.0 + uTime * 2.0) * 0.1;
-      float waveY = cos(pos.y * 6.0 + uTime * 2.0) * 0.1;
-      pos.z += waveX + waveY;
-      vWave = waveX;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-    }
-  `,
-  // Fragment Shader
-  `
-    uniform vec3 uColor;
-    varying vec2 vUv;
-    varying float vWave;
+  useEffect(() => {
+    const t1 = setTimeout(() => setStage(1), 400);   // Light emerges
+    const t2 = setTimeout(() => setStage(2), 1100);  // Name in DM Serif
+    const t3 = setTimeout(() => setStage(3), 1800);  // Role subtitle
+    const t4 = setTimeout(() => onComplete && onComplete(), 2600); // Complete
 
-    void main() {
-      float alpha = 0.5 + vWave * 2.0;
-      gl_FragColor = vec4(uColor, alpha);
-    }
-  `
-);
-extend({ WaveShaderMaterial });
-
-const EnergyWave = () => {
-  const ref = useRef();
-  useFrame(({ clock }) => {
-    if (ref.current) {
-      ref.current.uTime = clock.getElapsedTime();
-    }
-  });
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+    };
+  }, [onComplete]);
 
   return (
-    <mesh>
-      <planeGeometry args={[10, 10, 64, 64]} />
-      <waveShaderMaterial ref={ref} side={THREE.DoubleSide} />
-    </mesh>
-  );
-};
-
-const letterAnimation = {
-  hidden: { opacity: 0, y: -50, scale: 0.8 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: i * 0.1,
-      type: "spring",
-      stiffness: 500,
-      damping: 20,
-    },
-  }),
-};
-
-const glowAnimation = {
-  animate: {
-    textShadow: [
-      "0 0 10px #3AFF00",
-      "0 0 20px #3AFF00",
-      "0 0 30px #3AFF00",
-      "0 0 40px #3AFF00",
-    ],
-    transition: {
-      repeat: Infinity,
-      repeatType: "mirror",
-      duration: 1.5,
-    },
-  },
-};
-
-const LoadingScreen = () => {
-  const welcomeText = "Welcome";
-
-  return (
-    <div className="fixed inset-0 z-50">
-      {/* Three.js Canvas Background */}
-      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} />
-        <EnergyWave />
-      </Canvas>
-
-      {/* Overlay Animated Text */}
-      <div className="absolute inset-0 flex items-center justify-center bg-black/70">
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed inset-0 z-[99999] bg-[#07080a] flex flex-col items-center justify-center select-none"
+    >
+      {/* Subtle Atmospheric Light Flare */}
+      <div className="relative flex flex-col items-center justify-center text-center px-6">
         <motion.div
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex space-x-1 text-[#3AFF00] text-6xl font-extrabold"
-        >
-          {welcomeText.split("").map((char, i) => (
-            <motion.span
-              key={i}
-              custom={i}
-              variants={letterAnimation}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.span variants={glowAnimation} animate="animate">
-                {char}
-              </motion.span>
-            </motion.span>
-          ))}
-        </motion.div>
-      </div>
-    </div>
-  );
-};
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{
+            opacity: stage >= 1 ? 0.35 : 0,
+            scale: stage >= 1 ? 1.2 : 0.6,
+          }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          className="w-48 h-48 rounded-full bg-radial from-emerald-500/20 via-transparent to-transparent blur-2xl absolute pointer-events-none"
+        />
 
-export default LoadingScreen;
+        {/* Cinematic Title in DM Serif Display */}
+        <motion.h1
+          initial={{ opacity: 0, y: 15 }}
+          animate={{
+            opacity: stage >= 2 ? 1 : 0,
+            y: stage >= 2 ? 0 : 15,
+          }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="film-title text-4xl sm:text-6xl text-white font-normal tracking-tight mb-3"
+        >
+          Gurunathagouda
+        </motion.h1>
+
+        {/* Role Subtitle */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: stage >= 3 ? 1 : 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-xs font-sans tracking-[0.3em] uppercase text-slate-400"
+        >
+          AI • Machine Learning • Engineering
+        </motion.p>
+      </div>
+
+      {/* Skip button */}
+      <button
+        onClick={() => onComplete && onComplete()}
+        className="absolute bottom-10 text-xs font-sans text-slate-600 hover:text-slate-300 transition-colors uppercase tracking-widest"
+      >
+        Skip intro
+      </button>
+    </motion.div>
+  );
+}

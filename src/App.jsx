@@ -1,42 +1,56 @@
 // src/App.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
+import CustomCursor from './components/CustomCursor';
+import ThreeBG from './components/ThreeBG';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Qualifications from './components/Qualifications';
+import MLOpsPipeline from './components/MLOpsPipeline';
 import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Experience from './components/Experience';
+import Footer from './components/Footer';
 import Certificate from './components/Certificate';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ThreeBG from './components/ThreeBG';
+import ScrollProgress from './components/ScrollProgress';
 
-function App() {
+export default function App() {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) return <LoadingScreen />;
-
   return (
-    <div className="relative min-h-screen text-white bg-gray-900 overflow-hidden">
+    <div className="relative min-h-screen bg-[#07080a] text-[#e2e8f0] font-sans selection:bg-white/10 selection:text-white">
+      {/* Minimalist Dot Cursor */}
+      <CustomCursor />
+
+      {/* Cinematic Film Title Intro */}
+      <AnimatePresence>
+        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+
+      {/* Deep Atmospheric Backdrop */}
       <ThreeBG />
+
+      {/* Film grain + scroll progress */}
+      <div className="grain-overlay" aria-hidden="true" />
+      <ScrollProgress />
+
+      {/* Minimal Navigation */}
       <Navbar />
-      <main className="relative z-10 px-4 sm:px-8 md:px-16">
-        <Hero />
+
+      {/* Film Story Flow */}
+      <main className="relative z-10">
+        <Hero ready={!loading} />
         <About />
-        <Qualifications />
+        <Experience />
+        <MLOpsPipeline />
         <Projects />
+        <Skills />
         <Certificate />
         <Contact />
-        <br />
-        <Footer />
       </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
