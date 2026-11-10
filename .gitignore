@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 .playwright-mcp/
 .claude/
+
+# Personal documents (keep local only)
+src/assests/marks card.pdf
+src/assests/id.jpg
